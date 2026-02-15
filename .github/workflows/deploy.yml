@@ -1,9 +1,10 @@
-name: Deploy to GitHub Pages
+name: Deploy Vue.js App to GitHub Pages
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch: # Permet de déclencher manuellement le workflow
 
 jobs:
   deploy:
@@ -17,13 +18,26 @@ jobs:
       - name: Checkout your repository
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Utiliser une version LTS de Node.js
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./simple-website # Assurez-vous d'être dans le bon répertoire
+
+      - name: Build Vue.js app
+        run: npm run build
+        working-directory: ./simple-website # Assurez-vous d'être dans le bon répertoire
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.' # Uploader tout le contenu du répertoire racine
+          path: 'simple-website/dist' # Déployer le dossier de build de Vue.js
 
       - name: Deploy to GitHub Pages
         id: deployment
