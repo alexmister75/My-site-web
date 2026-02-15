@@ -10,5 +10,4 @@ export default defineConfig({
     emptyOutDir: true, // Vider le répertoire de sortie avant chaque build
   },
   root: '.', // Le répertoire racine de votre projet Vite est le répertoire actuel
-  publicDir: 'public', // Indique que les fichiers statiques sont dans le dossier public
 })
