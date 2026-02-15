@@ -20,9 +20,6 @@ jobs:
       - name: Checkout your repository
         uses: actions/checkout@v4
 
-      - name: Debug: List repository root
-        run: ls -R .
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -30,11 +27,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: simple-website
+        working-directory: .
 
       - name: Build Vue.js app
         run: npm run build
-        working-directory: simple-website
+        working-directory: .
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -42,7 +39,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'simple-website/dist' # Déployer le dossier de build de Vue.js
+          path: 'dist' # Déployer le dossier de build de Vue.js
 
       - name: Deploy to GitHub Pages
         id: deployment
