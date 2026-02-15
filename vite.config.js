@@ -4,10 +4,9 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  base: './', // Utiliser un chemin relatif pour GitHub Pages
+  base: '/My-site-web/', // Utiliser le nom du dépôt comme base
   build: {
     outDir: 'dist',
     emptyOutDir: true,
   },
-  root: '.',
 })
