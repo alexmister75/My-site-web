@@ -27,11 +27,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./simple-website # Assurez-vous d'être dans le bon répertoire
+        working-directory: simple-website
 
       - name: Build Vue.js app
         run: npm run build
-        working-directory: ./simple-website # Assurez-vous d'être dans le bon répertoire
+        working-directory: simple-website
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
